@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progweb Ringgo</title>
+</head>
+
+<body>
+
+    <section id="konversi">
+        <h2>Konversi Angka (Latihan 1)</h2>
+
+        <form action="" method="post" id="form-konversi">
+            <label for="angka">Angka :</label>
+            <input type="number" name="angka" id="angka">
+            <button type="submit">Konversikan</button>
+        </form>
+
+        <div>
+            <hr style="margin-top: 15px;">
+            <h4>Hasil Konversi : <span id="hasil"></span></h4>
+        </div>
+    </section>
+
+    <section id="kalkulator" style="margin-top: 100px;">
+        <h2>Kalkulator Sederhana (Latihan 2)</h2>
+
+        <form action="" method="post" id="form-kalkulator">
+            <label for="angka1">Angka 1 :</label>
+            <input type="number" name="angka1" id="angka1" required>
+            <label for="angka2" style="padding-left: 30px;">Angka 2 :</label>
+            <input type="number" name="angka2" id="angka2" required>
+        </form>
+
+        <div>
+            <hr style="margin-top: 15px;">
+            <button class="tombolKalkulator" id="tambah">+</button>
+            <button class="tombolKalkulator" id="kurang">-</button>
+            <button class="tombolKalkulator" id="bagi">/</button>
+            <button class="tombolKalkulator" id="kali">x</button>
+            <hr>
+            <h4>Hasil <span id="labelHasil"></span> : <span id="hasilPerhitungan"></span></h4>
+        </div>
+    </section>
+
+
+    <!-- Script konversi -->
+    <script type='text/javascript'>
+        // Ambil elemen form konversi
+        var formKonversi = document.querySelector('#form-konversi');
+        // Ambil elemen angka
+        var angka = document.querySelector('#angka');
+        // Ambil elemen hasil konversi
+        var hasil = document.querySelector('#hasil');
+        // Add event listener ketika form konversi di submit
+        formKonversi.addEventListener('submit', function(e) {
+            e.preventDefault(); // Cegah event bawaan
+            if (angka.value > 80 & angka.value <= 100) {
+                hasil.innerHTML = 'A';
+            } else if (angka.value > 66 & angka.value <= 70) {
+                hasil.innerHTML = 'B';
+            } else if (angka.value > 56 & angka.value <= 60) {
+                hasil.innerHTML = 'C';
+            } else if (angka.value > 41 & angka.value <= 55) {
+                hasil.innerHTML = 'D';
+            } else if (angka.value > 0 & angka.value <= 40) {
+                hasil.innerHTML = 'E';
+            } else if (angka.value > 71 & angka.value <= 80) {
+                hasil.innerHTML = 'AB';
+            } else if (angka.value > 61 & angka.value <= 65) {
+                hasil.innerHTML = 'BC';
+            } else {
+                hasil.innerHTML = 'Unknown';
+            }
+        });
+    </script>
+
+
+    <!-- Script kalkulator -->
+    <script type='text/javascript'>
+        var angka1 = document.querySelector('#angka1');
+        var angka2 = document.querySelector('#angka2');
+        var tombolKalkulator = document.querySelectorAll('.tombolKalkulator');
+        var hasilPerhitungan = document.querySelector('#hasilPerhitungan');
+        var labelHasil = document.querySelector('#labelHasil');
+
+        for (let i = 0; i < tombolKalkulator.length; i++) {
+            tombolKalkulator[i].addEventListener('click', function(e) {
+                e.preventDefault();
+                if (this.id == 'tambah') {
+                    var resultPerhitungan = parseInt(angka1.value) + parseInt(angka2.value);
+                    hasilPerhitungan.innerHTML = resultPerhitungan;
+                    console.log(labelHasil);
+                    labelHasil.innerHTML = 'Penjumlahan';
+                } else if (this.id == 'kurang') {
+                    var resultPerhitungan = parseInt(angka1.value) - parseInt(angka2.value);
+                    hasilPerhitungan.innerHTML = resultPerhitungan;
+                    labelHasil.innerHTML = 'Pengurangan';
+                } else if (this.id == 'kali') {
+                    var resultPerhitungan = parseInt(angka1.value) * parseInt(angka2.value);
+                    hasilPerhitungan.innerHTML = resultPerhitungan;
+                    labelHasil.innerHTML = 'Perkalian';
+                } else if (this.id == 'bagi') {
+                    var resultPerhitungan = parseInt(angka1.value) / parseInt(angka2.value);
+                    hasilPerhitungan.innerHTML = resultPerhitungan;
+                    labelHasil.innerHTML = 'Pembagian';
+                }
+            })
+        }
+    </script>
+
+</body>
+
+</html>
